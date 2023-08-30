@@ -22,7 +22,6 @@ struct PostListView: View {
                     }
                 }
             }
-            .padding()
             .navigationTitle("Posts")
             .task {
                 viewModel.fetchPostsCompletion()
