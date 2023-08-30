@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  PostListViewModel.swift
 //  Workshop_30.08
 //
 //  Created by Илья Шаповалов on 30.08.2023.
@@ -9,11 +9,11 @@ import Foundation
 import OSLog
 import Combine
 
-final class ViewModel: ObservableObject {
+final class PostListViewModel: ObservableObject {
     //MARK: - Private properties
     private let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
-        category: String(describing: ViewModel.self)
+        category: String(describing: PostListViewModel.self)
     )
     private let apiClient: ApiClient
     private var cancelable: Set<AnyCancellable> = .init()

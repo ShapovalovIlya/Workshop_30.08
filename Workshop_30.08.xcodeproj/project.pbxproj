@@ -8,26 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		86ED02F42A9F4F7B003E3BAB /* Workshop_30_08App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED02F32A9F4F7B003E3BAB /* Workshop_30_08App.swift */; };
-		86ED02F62A9F4F7B003E3BAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED02F52A9F4F7B003E3BAB /* ContentView.swift */; };
+		86ED02F62A9F4F7B003E3BAB /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED02F52A9F4F7B003E3BAB /* PostListView.swift */; };
 		86ED02F82A9F4F80003E3BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86ED02F72A9F4F80003E3BAB /* Assets.xcassets */; };
 		86ED02FB2A9F4F80003E3BAB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86ED02FA2A9F4F80003E3BAB /* Preview Assets.xcassets */; };
 		86ED03022A9F5040003E3BAB /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03012A9F5040003E3BAB /* Endpoint.swift */; };
 		86ED03042A9F51AE003E3BAB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03032A9F51AE003E3BAB /* Post.swift */; };
 		86ED03092A9F53E2003E3BAB /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03082A9F53E2003E3BAB /* ApiClient.swift */; };
-		86ED030B2A9F63CF003E3BAB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED030A2A9F63CF003E3BAB /* ViewModel.swift */; };
+		86ED030B2A9F63CF003E3BAB /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED030A2A9F63CF003E3BAB /* PostListViewModel.swift */; };
+		86ED030F2A9F988E003E3BAB /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED030E2A9F988E003E3BAB /* PostDetailView.swift */; };
+		86ED03112A9F9919003E3BAB /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03102A9F9919003E3BAB /* PostDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		86ED02F02A9F4F7B003E3BAB /* Workshop_30.08.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workshop_30.08.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86ED02F32A9F4F7B003E3BAB /* Workshop_30_08App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workshop_30_08App.swift; sourceTree = "<group>"; };
-		86ED02F52A9F4F7B003E3BAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		86ED02F52A9F4F7B003E3BAB /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
 		86ED02F72A9F4F80003E3BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86ED02FA2A9F4F80003E3BAB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		86ED03012A9F5040003E3BAB /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		86ED03032A9F51AE003E3BAB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		86ED03082A9F53E2003E3BAB /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		86ED030A2A9F63CF003E3BAB /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		86ED030A2A9F63CF003E3BAB /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
 		86ED030C2A9F797F003E3BAB /* Workshop-30-08-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Workshop-30-08-Info.plist"; sourceTree = SOURCE_ROOT; };
+		86ED030E2A9F988E003E3BAB /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		86ED03102A9F9919003E3BAB /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 		86ED02F22A9F4F7B003E3BAB /* Workshop_30.08 */ = {
 			isa = PBXGroup;
 			children = (
+				86ED030D2A9F9879003E3BAB /* DetailModule */,
 				86ED030C2A9F797F003E3BAB /* Workshop-30-08-Info.plist */,
 				86ED02F32A9F4F7B003E3BAB /* Workshop_30_08App.swift */,
 				86ED03072A9F5284003E3BAB /* MainModule */,
@@ -99,10 +104,19 @@
 		86ED03072A9F5284003E3BAB /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
-				86ED02F52A9F4F7B003E3BAB /* ContentView.swift */,
-				86ED030A2A9F63CF003E3BAB /* ViewModel.swift */,
+				86ED02F52A9F4F7B003E3BAB /* PostListView.swift */,
+				86ED030A2A9F63CF003E3BAB /* PostListViewModel.swift */,
 			);
 			path = MainModule;
+			sourceTree = "<group>";
+		};
+		86ED030D2A9F9879003E3BAB /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				86ED030E2A9F988E003E3BAB /* PostDetailView.swift */,
+				86ED03102A9F9919003E3BAB /* PostDetailViewModel.swift */,
+			);
+			path = DetailModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,11 +189,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86ED02F62A9F4F7B003E3BAB /* ContentView.swift in Sources */,
+				86ED02F62A9F4F7B003E3BAB /* PostListView.swift in Sources */,
+				86ED03112A9F9919003E3BAB /* PostDetailViewModel.swift in Sources */,
 				86ED03022A9F5040003E3BAB /* Endpoint.swift in Sources */,
 				86ED02F42A9F4F7B003E3BAB /* Workshop_30_08App.swift in Sources */,
 				86ED03042A9F51AE003E3BAB /* Post.swift in Sources */,
-				86ED030B2A9F63CF003E3BAB /* ViewModel.swift in Sources */,
+				86ED030F2A9F988E003E3BAB /* PostDetailView.swift in Sources */,
+				86ED030B2A9F63CF003E3BAB /* PostListViewModel.swift in Sources */,
 				86ED03092A9F53E2003E3BAB /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,16 +10,16 @@ import SwiftUI
 @main
 struct Workshop_30_08App: App {
     let apiClient = ApiClient()
-    @StateObject var viewModel: ViewModel
+    @StateObject var viewModel: PostListViewModel
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: viewModel)
+            PostListView(viewModel: viewModel)
         }
     }
     
     init() {
-        let viewModel = ViewModel(apiClient: self.apiClient)
+        let viewModel = PostListViewModel(apiClient: self.apiClient)
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 }

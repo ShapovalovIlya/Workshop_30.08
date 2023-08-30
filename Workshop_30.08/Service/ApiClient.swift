@@ -132,6 +132,7 @@ final class ApiClient {
     }
     
     //MARK: - Async/Await
+    @Sendable
     func getPosts() async throws -> [Post] {
         var request = URLRequest(url: Endpoint.posts.url)
         request.httpMethod = HTTPMethod.GET.rawValue
@@ -142,6 +143,7 @@ final class ApiClient {
         return try JSONDecoder().decode([Post].self, from: data)
     }
     
+    @Sendable
     func sendNew(post: Post) async throws -> Post {
         var request = URLRequest(url: Endpoint.posts.url)
         request.httpMethod = HTTPMethod.POST.rawValue
