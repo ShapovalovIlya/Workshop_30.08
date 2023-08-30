@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct Workshop_30_08App: App {
+    let apiClient = ApiClient()
+    @StateObject var viewModel: ViewModel
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: viewModel)
         }
+    }
+    
+    init() {
+        let viewModel = ViewModel(apiClient: self.apiClient)
+        self._viewModel = StateObject(wrappedValue: viewModel)
     }
 }

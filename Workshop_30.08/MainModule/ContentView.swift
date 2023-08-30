@@ -8,17 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var viewModel: ViewModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(viewModel.posts) { post in
+                    VStack {
+                        Text(post.title)
+                            .font(.title)
+                        Text(post.body)
+                            .font(.caption)
+                    }
+                }
+            }
+            .padding()
+            .navigationTitle("Posts")
+            .task {
+                viewModel.fetchPostsCompletion()
+            }
+            .alert(
+                "Error",
+                isPresented: $viewModel.showError) {
+                    Button("Ok", role: .cancel) {}
+                } message: {
+                    Text(viewModel.errorMessage)
+                }
+
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(viewModel: .init(apiClient: .init()))
 }

@@ -14,6 +14,7 @@
 		86ED03022A9F5040003E3BAB /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03012A9F5040003E3BAB /* Endpoint.swift */; };
 		86ED03042A9F51AE003E3BAB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03032A9F51AE003E3BAB /* Post.swift */; };
 		86ED03092A9F53E2003E3BAB /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03082A9F53E2003E3BAB /* ApiClient.swift */; };
+		86ED030B2A9F63CF003E3BAB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED030A2A9F63CF003E3BAB /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,8 @@
 		86ED03012A9F5040003E3BAB /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		86ED03032A9F51AE003E3BAB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		86ED03082A9F53E2003E3BAB /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		86ED030A2A9F63CF003E3BAB /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		86ED030C2A9F797F003E3BAB /* Workshop-30-08-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Workshop-30-08-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,11 +60,12 @@
 		86ED02F22A9F4F7B003E3BAB /* Workshop_30.08 */ = {
 			isa = PBXGroup;
 			children = (
+				86ED030C2A9F797F003E3BAB /* Workshop-30-08-Info.plist */,
 				86ED02F32A9F4F7B003E3BAB /* Workshop_30_08App.swift */,
 				86ED03072A9F5284003E3BAB /* MainModule */,
 				86ED02F72A9F4F80003E3BAB /* Assets.xcassets */,
 				86ED02F92A9F4F80003E3BAB /* Preview Content */,
-				86ED03062A9F526F003E3BAB /* Setvice */,
+				86ED03062A9F526F003E3BAB /* Service */,
 				86ED03052A9F5264003E3BAB /* Models */,
 			);
 			path = Workshop_30.08;
@@ -83,19 +87,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		86ED03062A9F526F003E3BAB /* Setvice */ = {
+		86ED03062A9F526F003E3BAB /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				86ED03012A9F5040003E3BAB /* Endpoint.swift */,
 				86ED03082A9F53E2003E3BAB /* ApiClient.swift */,
 			);
-			path = Setvice;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		86ED03072A9F5284003E3BAB /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
 				86ED02F52A9F4F7B003E3BAB /* ContentView.swift */,
+				86ED030A2A9F63CF003E3BAB /* ViewModel.swift */,
 			);
 			path = MainModule;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				86ED03022A9F5040003E3BAB /* Endpoint.swift in Sources */,
 				86ED02F42A9F4F7B003E3BAB /* Workshop_30_08App.swift in Sources */,
 				86ED03042A9F51AE003E3BAB /* Post.swift in Sources */,
+				86ED030B2A9F63CF003E3BAB /* ViewModel.swift in Sources */,
 				86ED03092A9F53E2003E3BAB /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +317,7 @@
 				DEVELOPMENT_TEAM = 4WQFD456R9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Workshop-30-08-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -340,6 +347,7 @@
 				DEVELOPMENT_TEAM = 4WQFD456R9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Workshop-30-08-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -7,6 +7,8 @@
 
 import Foundation
 
+// https://jsonplaceholder.typicode.com/posts
+
 struct Endpoint {
     let path: String
     var queryItems: [URLQueryItem] = .init()
@@ -15,6 +17,7 @@ struct Endpoint {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "jsonplaceholder.typicode.com"
+        components.path = path
         
         guard let url = components.url else {
             preconditionFailure("Unable to create url from: \(components)")

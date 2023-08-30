@@ -7,26 +7,44 @@
 
 import Foundation
 import Combine
+import OSLog
 
-struct ApiClient {
+final class ApiClient {
+    private let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: ApiClient.self)
+    )
+    
     typealias Response = (data: Data, response: URLResponse)
     
     //MARK: - Combine
     func getPostsPublisher() -> AnyPublisher<[Post], Error> {
-        URLSession.shared
+        logger.debug("Create get posts publisher.")
+        return URLSession.shared
             .dataTaskPublisher(for: Endpoint.posts.url)
-            .map(\.data)
+            .tryMap { data, response -> Data in
+                guard
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode >= 200 && response.statusCode < 300
+                else {
+                    throw URLError(.badServerResponse)
+                }
+                
+                return data
+            }
             .decode(type: [Post].self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
     
     func sendNew(post: Post) -> AnyPublisher<Post, Error> {
+        logger.debug("Create send post publisher")
         var request = URLRequest(url: Endpoint.posts.url)
         request.httpMethod = HTTPMethod.POST.rawValue
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-type")
         do {
             request.httpBody = try JSONEncoder().encode(post)
         } catch {
+            logger.error("Fail to encode post")
             return Fail(error: error)
                 .eraseToAnyPublisher()
         }
@@ -40,16 +58,22 @@ struct ApiClient {
     
     //MARK: - Old style completion
     func getPosts(completion: @escaping (Result<[Post], Error>) -> Void) {
+        logger.debug("Create get posts task with completion")
+        
         var request = URLRequest(url: Endpoint.posts.url)
         request.httpMethod = HTTPMethod.GET.rawValue
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-type")
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             if let error = error {
+                self?.logger.error("completion task failed with error")
                 completion(.failure(error))
             }
             guard
                 let httpResponse = response as? HTTPURLResponse,
-                httpResponse.statusCode == 200
+                httpResponse.statusCode >= 200 && httpResponse.statusCode < 300
             else {
+                self?.logger.error("completion task failed with bad server response")
                 completion(.failure(URLError(.badServerResponse)))
                 return
             }
@@ -57,8 +81,10 @@ struct ApiClient {
             if let data = data {
                 do {
                     let posts = try JSONDecoder().decode([Post].self, from: data)
+                    self?.logger.debug("completion task end with success")
                     completion(.success(posts))
                 } catch {
+                    self?.logger.error("completion task failed with decoding error")
                     completion(.failure(error))
                 }
             }
@@ -72,18 +98,21 @@ struct ApiClient {
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-type")
         do {
             request.httpBody = try JSONEncoder().encode(post)
+            logger.error("Fail to encode post")
         } catch {
             completion(.failure(error))
         }
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             if let error = error {
+                self?.logger.error("completion task failed with error")
                 completion(.failure(error))
             }
             guard
                 let httpResponse = response as? HTTPURLResponse,
                 httpResponse.statusCode == 200
             else {
+                self?.logger.error("completion task failed with bad server response")
                 completion(.failure(URLError(.badServerResponse)))
                 return
             }
@@ -91,8 +120,10 @@ struct ApiClient {
             if let data = data {
                 do {
                     let post = try JSONDecoder().decode(Post.self, from: data)
+                    self?.logger.debug("completion task end with success")
                     completion(.success(post))
                 } catch {
+                    self?.logger.error("completion task failed with decoding error")
                     completion(.failure(error))
                 }
             }
