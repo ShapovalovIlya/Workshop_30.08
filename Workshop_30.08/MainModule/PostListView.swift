@@ -7,37 +7,75 @@
 
 import SwiftUI
 
-struct PostListView: View {
-    @ObservedObject var viewModel: PostListViewModel
+struct PostsList: View {
+    let posts: [Post]
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(viewModel.posts) { post in
-                    VStack {
-                        Text(post.title)
-                            .font(.title)
-                        Text(post.body)
-                            .font(.caption)
-                    }
+        List {
+            ForEach(posts) { post in
+                VStack {
+                    Text(post.title)
+                        .font(.title2)
+                    Text(post.body)
+                        .font(.caption)
+                }
+                .onTapGesture {
+                    
                 }
             }
-            .navigationTitle("Posts")
-            .task {
-                viewModel.fetchPostsCompletion()
-            }
-            .alert(
-                "Error",
-                isPresented: $viewModel.showError) {
-                    Button("Ok", role: .cancel) {}
-                } message: {
-                    Text(viewModel.errorMessage)
-                }
-
         }
     }
 }
 
-#Preview {
-    PostListView(viewModel: .init(apiClient: .init()))
+struct PostListView: View {
+    @ObservedObject var store: Store<PostListDomain.State, PostListDomain.Action>
+    
+    var body: some View {
+        NavigationStack {
+            VStack {
+                switch store.state.dataLoadingStatus {
+                case .none:
+                    PostsList(posts: store.state.posts)
+                case .loading:
+                    ProgressView()
+                case .error:
+                    EmptyView()
+                }
+            }
+            .navigationTitle("Posts")
+            .onAppear {
+                store.send(.onAppeared)
+            }
+            .alert(
+                "Error",
+                isPresented: bindAlert()
+            ) {
+                Button("Ok", role: .cancel) {}
+            } message: {
+                Text(store.state.errorMessage)
+            }
+            .toolbar(content: {
+                Button("Add post") {
+                    
+                }
+            })
+        }
+    }
+    
+    func bindAlert() -> Binding<Bool> {
+        .init(
+            get: { store.state.showError },
+            set: { _ in store.send(.dismissAlert) }
+        )
+    }
 }
+
+#Preview("Alert") {
+    PostListView(store: PostListDomain.alertStore )
+}
+
+//#Preview("Alert") {
+//    let vm = PostListViewModel(apiClient: .init())
+//    vm.alertState()
+//    return PostListView(viewModel: vm)
+//}

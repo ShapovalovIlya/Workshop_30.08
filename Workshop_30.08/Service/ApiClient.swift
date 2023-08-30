@@ -33,6 +33,7 @@ final class ApiClient {
                 return data
             }
             .decode(type: [Post].self, decoder: JSONDecoder())
+            .delay(for: 3, scheduler: RunLoop.current)
             .eraseToAnyPublisher()
     }
     

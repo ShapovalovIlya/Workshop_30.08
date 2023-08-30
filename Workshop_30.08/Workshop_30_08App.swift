@@ -10,16 +10,19 @@ import SwiftUI
 @main
 struct Workshop_30_08App: App {
     let apiClient = ApiClient()
-    @StateObject var viewModel: PostListViewModel
+    @StateObject var viewModel: Store<PostListDomain.State, PostListDomain.Action>
     
     var body: some Scene {
         WindowGroup {
-            PostListView(viewModel: viewModel)
+            PostListView(store: viewModel)
         }
     }
     
     init() {
-        let viewModel = PostListViewModel(apiClient: self.apiClient)
+        let viewModel = Store(
+            initialState: PostListDomain.State(),
+            reducer: PostListDomain(apiClient: self.apiClient).reduce(_:action:)
+        )
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 }

@@ -14,9 +14,10 @@
 		86ED03022A9F5040003E3BAB /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03012A9F5040003E3BAB /* Endpoint.swift */; };
 		86ED03042A9F51AE003E3BAB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03032A9F51AE003E3BAB /* Post.swift */; };
 		86ED03092A9F53E2003E3BAB /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03082A9F53E2003E3BAB /* ApiClient.swift */; };
-		86ED030B2A9F63CF003E3BAB /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED030A2A9F63CF003E3BAB /* PostListViewModel.swift */; };
+		86ED030B2A9F63CF003E3BAB /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED030A2A9F63CF003E3BAB /* Store.swift */; };
 		86ED030F2A9F988E003E3BAB /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED030E2A9F988E003E3BAB /* PostDetailView.swift */; };
 		86ED03112A9F9919003E3BAB /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03102A9F9919003E3BAB /* PostDetailViewModel.swift */; };
+		86ED03132A9FB3D5003E3BAB /* PostListDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED03122A9FB3D5003E3BAB /* PostListDomain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +29,11 @@
 		86ED03012A9F5040003E3BAB /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		86ED03032A9F51AE003E3BAB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		86ED03082A9F53E2003E3BAB /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		86ED030A2A9F63CF003E3BAB /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
+		86ED030A2A9F63CF003E3BAB /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		86ED030C2A9F797F003E3BAB /* Workshop-30-08-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Workshop-30-08-Info.plist"; sourceTree = SOURCE_ROOT; };
 		86ED030E2A9F988E003E3BAB /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		86ED03102A9F9919003E3BAB /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		86ED03122A9FB3D5003E3BAB /* PostListDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListDomain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				86ED02F52A9F4F7B003E3BAB /* PostListView.swift */,
-				86ED030A2A9F63CF003E3BAB /* PostListViewModel.swift */,
+				86ED030A2A9F63CF003E3BAB /* Store.swift */,
+				86ED03122A9FB3D5003E3BAB /* PostListDomain.swift */,
 			);
 			path = MainModule;
 			sourceTree = "<group>";
@@ -195,8 +198,9 @@
 				86ED02F42A9F4F7B003E3BAB /* Workshop_30_08App.swift in Sources */,
 				86ED03042A9F51AE003E3BAB /* Post.swift in Sources */,
 				86ED030F2A9F988E003E3BAB /* PostDetailView.swift in Sources */,
-				86ED030B2A9F63CF003E3BAB /* PostListViewModel.swift in Sources */,
+				86ED030B2A9F63CF003E3BAB /* Store.swift in Sources */,
 				86ED03092A9F53E2003E3BAB /* ApiClient.swift in Sources */,
+				86ED03132A9FB3D5003E3BAB /* PostListDomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
